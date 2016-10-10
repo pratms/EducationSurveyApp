@@ -33,10 +33,10 @@ var authToken = '8c055fe15f07533ff69388be72b93b16';
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
-
+var no = req.body.user.number;
 client.messages.create({
     body: 'please help in survey type Yes Or No and send us a reply',
-    to: '+12019203362',  
+    to: no,  
     from: '+16466528019' 
 }, function(err) {
     console.log(err);
@@ -54,13 +54,9 @@ app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
     var response = req.query.Body;
-    if (response == 'Yes') {
+    if (req.query.Body == 'Yes') {
             twiml.message('Thanks!');
-             res.render('index', {  
-   body: response,
-    to: '+1 (929)216-8151',  
-    from: '+16466528019'  });
-});
+
 
     } else if(req.query.Body == 'No') {
         twiml.message('no prob');

@@ -9,7 +9,14 @@
 <body>
 
 	<div class= "container" style = "margin-top:10%" ng-controller="myController">
-	<h1><%= body %> received from <%= to %></h1>
+	<form method="post" action="/">
+	<div class="input-group input-group-sm">
+   
+    <input type="text" class="form-control" placeholder="Enter no for survey" aria-describedby="sizing-addon3" name= "user[number]">
+     <input type="submit" value="Submit">
+ 
+ </div>
+ </form>
 
 
 	</div>
