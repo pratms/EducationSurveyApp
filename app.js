@@ -53,8 +53,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    if (req.query.Body == 'Yes') {
+    var response = req.query.Body;
+    if (response == 'Yes') {
             twiml.message('Thanks!');
+             res.render('index', {  
+   body: response,
+    to: '+1 (929)216-8151',  
+    from: '+16466528019'  });
+});
 
     } else if(req.query.Body == 'No') {
         twiml.message('no prob');
