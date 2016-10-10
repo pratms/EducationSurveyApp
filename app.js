@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
-app.get('/', function(req, res, next) {
+app.get('/post', function(req, res, next) {
 var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
 var authToken = '8c055fe15f07533ff69388be72b93b16';  
 
@@ -44,7 +44,7 @@ client.messages.create({
 );
   res.render('index', {  
    body: 'Twilio will send "Hello from Pratik Modak" to ',
-    to: '+1 (929)216-8151',  
+    to: no,  
     from: '+16466528019'  });
 });
 
