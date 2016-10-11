@@ -33,7 +33,7 @@ var authToken = '8c055fe15f07533ff69388be72b93b16';
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
-var number = req.body;
+var number = req.body.data;
 console.log(number);
 if (number!== null) 
 {
