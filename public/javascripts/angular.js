@@ -13,10 +13,10 @@
 		                }
 		            }
 
-            $http.post('/', data, config)
-            .success(function (data, status, headers, config) {
+            $http.post('/', $scope.search, config)
+            .success(function ($scope.search, status, headers, config) {
                console.log("posted successfully");
-               console.log(data);
+               console.log($scope.search);
 
             })
             .error(function (data, status, header, config) {
