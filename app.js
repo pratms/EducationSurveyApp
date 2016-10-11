@@ -33,7 +33,7 @@ var authToken = '8c055fe15f07533ff69388be72b93b16';
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
-var number = req.body;
+var number = req.body.search;
 console.log(number);
 if (number) {
 client.messages.create({
@@ -55,7 +55,6 @@ client.messages.create({
 
 });
 
-app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.get('/', function(req, res) {
     var twilio = require('twilio');
