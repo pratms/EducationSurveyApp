@@ -2,10 +2,10 @@
 				   var myApp = angular.module("myApp" , [])
 				   .controller("myController" , function($scope, $http)
 				   {
-				   	$scope.search="";
+				  
 
 				   	$scope.SendData = function () {
-                    $scope.search;
+                    var data =  $scope.search;
         
 		            var config = {
 		                headers : {
@@ -16,7 +16,7 @@
             $http.get('/', data, config)
             .success(function (data, status, headers, config) {
                console.log("posted successfully");
-               console.log(data);
+             
 
 
             })
