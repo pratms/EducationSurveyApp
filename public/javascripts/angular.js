@@ -13,9 +13,11 @@
 		                }
 		            }
 
-            $http.post('/post', data, config)
+            $http.post('/', data, config)
             .success(function (data, status, headers, config) {
                console.log("posted successfully");
+               console.log(data);
+
             })
             .error(function (data, status, header, config) {
              console.log("error");

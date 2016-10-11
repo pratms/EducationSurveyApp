@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.post('/post', function(req, res, next) {
+app.post('/', function(req, res, next) {
 var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
 var authToken = '8c055fe15f07533ff69388be72b93b16';  
 
@@ -35,7 +35,9 @@ var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
 var number = req.body.search;
 console.log(number);
-if (number) {
+if (number!== null) 
+{
+
 client.messages.create({
     body: 'please help in survey type Yes Or No and send us a reply',
     to: number,  
@@ -44,11 +46,6 @@ client.messages.create({
     console.log(err);
 }
 );
-
-  res.render('index', {  
-   body: 'Twilio will send "Hello from Pratik Modak" to ',
-    to: '+1 (929)216-8151',  
-    from: '+16466528019'  });
 
 };
 
