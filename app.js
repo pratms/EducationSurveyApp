@@ -27,13 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.get('/', function(req, res, next) {
+app.post('/', function(req, res, next) {
 var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
 var authToken = '8c055fe15f07533ff69388be72b93b16';  
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
 var number = req.body.search;
+console.log(number);
 if (number) {
 client.messages.create({
     body: 'please help in survey type Yes Or No and send us a reply',
