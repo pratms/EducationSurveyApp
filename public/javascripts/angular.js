@@ -16,6 +16,7 @@
             $http.get('/', data, config)
             .success(function (data, status, headers, config) {
                console.log("posted successfully");
+               console.log(data);
 
 
             })
