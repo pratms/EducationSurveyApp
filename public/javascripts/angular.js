@@ -2,26 +2,18 @@
 				   var myApp = angular.module("myApp" , [])
 				   .controller("myController" , function($scope, $http)
 				   {
-				   	$http.get("/").success(function (response)
-				   	{
-				  
 
-				    	$scope.data = response;
-				    	console.log(response);
-				   	
-					
+				   	$scope.SendData = function () {
+          
+                    var data = $scope.search;
 
-					});
-				   	$scope.num = 1;
-				   	$scope.clicked = function(){
-
-				   		$scope.html = "You have clicked " + $scope.num + " no of times";
-				   		$scope.num += 1;
-
-				   	};
-
-
-
-
-
+				            $http.post('/', data)
+				            .success(function (data) {
+				               console.log("posted successfully");
+				            })
+				            .error(function (data, status, header, config) {
+				             console.log("error");
+				            });
+				        };
+				   
 				   });
