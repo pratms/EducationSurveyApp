@@ -2,10 +2,10 @@
 				   var myApp = angular.module("myApp" , [])
 				   .controller("myController" , function($scope, $http)
 				   {
+				   	$scope.search="";
 
 				   	$scope.SendData = function () {
-          
-                    var data = $scope.search;
+                    $scope.search;
         
 		            var config = {
 		                headers : {
