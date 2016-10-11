@@ -2,11 +2,12 @@
 				   var myApp = angular.module("myApp" , [])
 				   .controller("myController" , function($scope, $http)
 				   {
-				   	$http.get("/posts").success(function (response)
+				   	$http.get("/").success(function (response)
 				   	{
 				  
 
 				    	$scope.data = response;
+				    	console.log(response);
 				   	
 					
 
