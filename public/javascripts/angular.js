@@ -6,14 +6,20 @@
 				   	$scope.SendData = function () {
           
                     var data = $scope.search;
+        
+		            var config = {
+		                headers : {
+		                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+		                }
+		            }
 
-				            $http.post('/', data)
-				            .success(function (data) {
-				               console.log("posted successfully");
-				            })
-				            .error(function (data, status, header, config) {
-				             console.log("error");
-				            });
-				        };
+            $http.post('/post', data, config)
+            .success(function (data, status, headers, config) {
+               console.log("posted successfully");
+            })
+            .error(function (data, status, header, config) {
+             console.log("error");
+            });
+        };
 				   
 				   });
