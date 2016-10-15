@@ -9,6 +9,7 @@ var mongojs = require('mongojs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+
 var app = express();
 
 
@@ -22,25 +23,27 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.get('/', function(req, res, next) {
-var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
-var authToken = '8c055fe15f07533ff69388be72b93b16';  
+app.post('/view1', function(req, res) {
+    console.log(req.body.search);
+    res.end();
+    var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
+    var authToken = '8c055fe15f07533ff69388be72b93b16';  
 
-var twilio = require('twilio');
-var client = new twilio.RestClient(accountSid, authToken);
-var number = req.body.resp;
-console.log(number);
-if (number!== null) 
+    var twilio = require('twilio');
+    var client = new twilio.RestClient(accountSid, authToken);
+if (req.body.search) 
 {
+  var num = req.body.search;
+
 
 client.messages.create({
     body: 'please help in survey type Yes Or No and send us a reply',
-    to: number,  
+    to: num,  
     from: '+16466528019' 
 }, function(err) {
     console.log(err);
@@ -48,9 +51,8 @@ client.messages.create({
 );
 
 };
-
-
 });
+
 
 
 app.get('/', function(req, res) {
@@ -58,6 +60,7 @@ app.get('/', function(req, res) {
     var twiml = new twilio.TwimlResponse();
     if (req.query.Body == 'Yes') {
             twiml.message('Thanks!');
+            res.json({reply:'Yes'});
 
     } else if(req.query.Body == 'No') {
         twiml.message('no prob');
@@ -65,6 +68,7 @@ app.get('/', function(req, res) {
         twiml.message('No Body param match, Twilio sends this in the request to your server.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
+
     res.end(twiml.toString());
     
 });
@@ -82,6 +86,7 @@ app.post('/', function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
 });
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

@@ -4,28 +4,24 @@
 				   {
 				  
 
-				   	$scope.SendData = function () {
-                   var data = {
-								    resp: $scope.search,
-								  
-								};
-        
-		            var config = {
-		                headers : {
-		                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-		                }
-		            }
+						$scope.SendData = function() {
+						$http.post('/view1',$scope.formData).
+						success(function(data) {
+						console.log("posted successfully");
+						}).error(function(data) {
+						console.error("error in posting");
+						})
+						}
 
-            $http.get('/', data, config)
-            .success(function (data, status, headers, config) {
-               console.log("posted successfully");
-             
+						$http.get("/").success(function (response)
+						{
 
 
-            })
-            .error(function (data, status, header, config) {
-             console.log("error");
-            });
-        };
-				   
+						$scope.data = response;
+
+
+
+						});
+
+		   
 				   });
