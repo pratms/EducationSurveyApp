@@ -59,13 +59,12 @@ app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
     if (req.query.Body == 'Yes') {
-            twiml.message('Thanks!');
-            res.json({reply:'Yes'});
-
-    } else if(req.query.Body == 'No') {
+      var zip = req.query.FromZip;
+            twiml.message('Thanks!'+ zip);
+          } else if(req.query.Body == 'No') {
         twiml.message('no prob');
     } else {
-        twiml.message('No Body param match, Twilio sends this in the request to your server.');
+        twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
 
@@ -77,11 +76,12 @@ app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
     if (req.body.Body == 'Yes') {
-        twiml.message('Thanks!');
+       var zip = req.query.FromZip;
+            twiml.message('Thanks!'+ zip);
     } else if(req.body.Body == 'No') {
         twiml.message('No prob');
     } else {
-        twiml.message('No Body param match, Twilio sends this in the request to your server.');
+        twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
