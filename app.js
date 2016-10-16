@@ -59,11 +59,11 @@ app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
     var string = req.query.Body;
-
-      string = string.split(" ");
+      var parts = string.match(/[^0-9a-zA-Z]+/g);
       var stringArray = new Array();
-      for(var i =0; i < string.length; i++){
-      stringArray.push(string[i]);
+      for(var i =0; i < parts.length; i++)
+      {
+      stringArray.push(parts[i]);
 
       }
 
@@ -86,12 +86,12 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    var string = req.query.Body;
-
-      string = string.split(" ");
+       var string = req.query.Body;
+      var parts = string.match(/[^0-9a-zA-Z]+/g);
       var stringArray = new Array();
-      for(var i =0; i < string.length; i++){
-      stringArray.push(string[i]);
+      for(var i =0; i < parts.length; i++)
+      {
+      stringArray.push(parts[i]);
 
       }
 
