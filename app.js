@@ -58,12 +58,20 @@ client.messages.create({
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    if (req.query.Body == 'Yes') {
-      var zip = req.query.FromZip;
+   var string = req.query.Body;
+    string = string.split(" ");
+    var stringArray = new Array();
+   for(var i =0; i < string.length; i++){
+    stringArray.push(string[i]);
+  
+}
+
+    if (stringArray[1] == 'Yes' or stringArray[1] == 'No' ) 
+    {
+      var zip = stringArray[0];
             twiml.message('Thanks!'+ zip);
-          } else if(req.query.Body == 'No') {
-        twiml.message('no prob');
-    } else {
+          } 
+           else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
@@ -73,17 +81,26 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    var twilio = require('twilio');
+       var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    if (req.body.Body == 'Yes') {
-       var zip = req.query.FromZip;
+   var string = req.query.Body;
+    string = string.split(" ");
+    var stringArray = new Array();
+   for(var i =0; i < string.length; i++){
+    stringArray.push(string[i]);
+  
+}
+
+    if (stringArray[1] == 'Yes' or stringArray[1] == 'No' ) 
+    {
+      var zip = stringArray[0];
             twiml.message('Thanks!'+ zip);
-    } else if(req.body.Body == 'No') {
-        twiml.message('No prob');
-    } else {
+          } 
+           else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
+
     res.end(twiml.toString());
 });
 
