@@ -29,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.post('/view1', function(req, res) {
-
     console.log(req.body.search);
     res.end();
     var accountSid = 'AC5b3a64ad844dfbb918812897bcf2a1ce'; 
@@ -59,24 +58,12 @@ client.messages.create({
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    var string = "07306 yes";
-
-      string = string.split(" ");
-      var stringArray = new Array();
-      for(var i =0; i < string.length; i++){
-      stringArray.push(string[i]);
-
-      }
-      console.log(stringArray[0]);
-      console.log(stringArray[1]);
-
-    var zip = stringArray[0];
     if (req.query.Body == 'Yes') {
-            twiml.message('Thanks!'+zip);
+            twiml.message('Thanks!');
           
 
     } else if(req.query.Body == 'No') {
-        twiml.message('Thanks');
+        twiml.message('no prob');
     } else {
         twiml.message('Invalid Response try again.');
     }
@@ -89,27 +76,11 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    var string = "07306 yes";
-
-      string = string.split(" ");
-      var stringArray = new Array();
-      for(var i =0; i < string.length; i++){
-      stringArray.push(string[i]);
-
-      }
-      console.log(stringArray[0]);
-      console.log(stringArray[1]);
-    if (req.query.Body == 'Yes') {
-            twiml.message('Thanks!' + zip);
-          
-
-    } 
-    else if(req.query.Body == 'No')
-     {
-        twiml.message('Thanks'); 
-    }
-
-        else {
+    if (req.body.Body == 'Yes') {
+        twiml.message('Thanks!');
+    } else if(req.body.Body == 'No') {
+        twiml.message('No prob');
+    } else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
