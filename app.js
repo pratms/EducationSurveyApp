@@ -93,7 +93,8 @@ app.post('/', function(req, res) {
 
       string = string.split(" ");
       var stringArray = new Array();
-      for(var i =0; i < string.length; i++){
+      for(var i =0; i < string.length; i++)
+      {
       stringArray.push(string[i]);
 
       }
@@ -101,8 +102,8 @@ app.post('/', function(req, res) {
       console.log(stringArray[1]);
 
     var zip = stringArray[0];
-    if (req.body.Body == 'Yes' + zip) {
-        twiml.message('Thanks!');
+    if (req.body.Body == 'Yes') {
+        twiml.message('Thanks!' +zip);
     } else if(req.body.Body == 'No') {
         twiml.message('No prob');
     } else {
