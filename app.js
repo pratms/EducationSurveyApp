@@ -42,7 +42,7 @@ if (req.body.search)
 
 
 client.messages.create({
-    body: 'please help in survey type Yes Or No and send us a reply',
+    body: 'Please let us know if you are satisfied with the education quality in your area type AreaCode Yes or No (eg. 11111 yes) and send us a reply',
     to: num,  
     from: '+16466528019' 
 }, function(err) {
@@ -67,16 +67,15 @@ app.get('/', function(req, res) {
       stringArray.push(string[i]);
 
       }
-      console.log(stringArray[0]);
-      console.log(stringArray[1]);
-
+     
+    var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
-    if (stringArray[1] == 'Yes') {
-            twiml.message('Thanks!' + zip);
+    if (str == 'yes') {
+            twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
           
 
-    } else if(stringArray[1] == 'No') {
-        twiml.message('no prob');
+    } else if(str == 'no') {
+        twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
     } else {
         twiml.message('Invalid Response try again.');
     }
@@ -98,14 +97,13 @@ app.post('/', function(req, res) {
       stringArray.push(string[i]);
 
       }
-      console.log(stringArray[0]);
-      console.log(stringArray[1]);
+      var str = stringArray[1].toLowerCase();
 
     var zip = stringArray[0];
-    if (stringArray[1] == 'Yes') {
-        twiml.message('Thanks!' +zip);
-    } else if(stringArray[1] == 'No') {
-        twiml.message('No prob');
+    if (str == 'yes') {
+        twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
+    } else if(str == 'no') {
+        twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
     } else {
         twiml.message('Invalid Response try again.');
     }
