@@ -66,7 +66,7 @@ app.get('/', function(req, res) {
   
 }
 
-    if (stringArray[1] == 'Yes' or stringArray[1] == 'No' ) 
+    if (stringArray[1] == 'Yes') 
     {
       var zip = stringArray[0];
             twiml.message('Thanks!'+ zip);
@@ -81,7 +81,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-       var twilio = require('twilio');
+    var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
    var string = req.query.Body;
     string = string.split(" ");
@@ -89,18 +89,16 @@ app.post('/', function(req, res) {
    for(var i =0; i < string.length; i++){
     stringArray.push(string[i]);
   
-}
-
-    if (stringArray[1] == 'Yes' or stringArray[1] == 'No' ) 
+}    
+    if (stringArray[1] == 'Yes') 
     {
-      var zip = stringArray[0];
+   var zip = stringArray[0];
             twiml.message('Thanks!'+ zip);
           } 
            else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
-
     res.end(twiml.toString());
 });
 
