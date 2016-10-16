@@ -58,20 +58,23 @@ client.messages.create({
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-   var string = req.query.Body;
-    string = string.split(" ");
-    var stringArray = new Array();
-   for(var i =0; i < string.length; i++){
-    stringArray.push(string[i]);
-  
-}
+    var string = req.query.Body;
 
-    if (stringArray[1] == 'Yes') 
-    {
-      var zip = stringArray[0];
-            twiml.message('Thanks!'+ zip);
-          } 
-           else {
+      string = string.split(" ");
+      var stringArray = new Array();
+      for(var i =0; i < string.length; i++){
+      stringArray.push(string[i]);
+
+      }
+
+    var zip = stringArray[0];
+    if (stringArray[1] == 'Yes') {
+            twiml.message('Thanks!' + zip);
+          
+
+    } else if(stringArray[1] == 'No') {
+        twiml.message('Thanks');
+    } else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
@@ -83,19 +86,27 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-   var string = req.query.Body;
-    string = string.split(" ");
-    var stringArray = new Array();
-   for(var i =0; i < string.length; i++){
-    stringArray.push(string[i]);
-  
-}    
-    if (stringArray[1] == 'Yes') 
-    {
-   var zip = stringArray[0];
-            twiml.message('Thanks!'+ zip);
-          } 
-           else {
+    var string = req.query.Body;
+
+      string = string.split(" ");
+      var stringArray = new Array();
+      for(var i =0; i < string.length; i++){
+      stringArray.push(string[i]);
+
+      }
+
+    var zip = stringArray[0];
+    if (stringArray[1] == 'Yes') {
+            twiml.message('Thanks!' + zip);
+          
+
+    } 
+    else if(stringArray[1] == 'No')
+     {
+        twiml.message('Thanks'); 
+    }
+
+        else {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
