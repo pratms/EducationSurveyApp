@@ -58,8 +58,21 @@ client.messages.create({
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
+    var string = "07306 yes";
+
+      string = string.split(" ");
+      var stringArray = new Array();
+      for(var i =0; i < string.length; i++)
+      {
+      stringArray.push(string[i]);
+
+      }
+      console.log(stringArray[0]);
+      console.log(stringArray[1]);
+
+    var zip = stringArray[0];
     if (req.query.Body == 'Yes') {
-            twiml.message('Thanks!');
+            twiml.message('Thanks!' + zip);
           
 
     } else if(req.query.Body == 'No') {
@@ -76,7 +89,19 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    if (req.body.Body == 'Yes') {
+        var string = "07306 yes";
+
+      string = string.split(" ");
+      var stringArray = new Array();
+      for(var i =0; i < string.length; i++){
+      stringArray.push(string[i]);
+
+      }
+      console.log(stringArray[0]);
+      console.log(stringArray[1]);
+
+    var zip = stringArray[0];
+    if (req.body.Body == 'Yes' + zip) {
         twiml.message('Thanks!');
     } else if(req.body.Body == 'No') {
         twiml.message('No prob');
