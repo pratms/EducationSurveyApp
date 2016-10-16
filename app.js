@@ -58,7 +58,7 @@ client.messages.create({
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-    var string = "07306 yes";
+    var string = req.body.Body;
 
       string = string.split(" ");
       var stringArray = new Array();
@@ -71,11 +71,11 @@ app.get('/', function(req, res) {
       console.log(stringArray[1]);
 
     var zip = stringArray[0];
-    if (req.query.Body == 'Yes') {
+    if (stringArray[1] == 'Yes') {
             twiml.message('Thanks!' + zip);
           
 
-    } else if(req.query.Body == 'No') {
+    } else if(stringArray[1] == 'No') {
         twiml.message('no prob');
     } else {
         twiml.message('Invalid Response try again.');
@@ -89,7 +89,7 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-        var string = "07306 yes";
+        var string = req.body.Body;
 
       string = string.split(" ");
       var stringArray = new Array();
@@ -102,9 +102,9 @@ app.post('/', function(req, res) {
       console.log(stringArray[1]);
 
     var zip = stringArray[0];
-    if (req.body.Body == 'Yes') {
+    if (stringArray[1] == 'Yes') {
         twiml.message('Thanks!' +zip);
-    } else if(req.body.Body == 'No') {
+    } else if(stringArray[1] == 'No') {
         twiml.message('No prob');
     } else {
         twiml.message('Invalid Response try again.');
