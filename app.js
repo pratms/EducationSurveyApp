@@ -53,7 +53,18 @@ client.messages.create({
 };
 });
 
+app.get('/posts', function(req, res)
+{
+   db.details.find(function(err, data) 
+  {
 
+     console.log(data);
+     res.json(data);
+  });
+
+
+
+});
 
 app.get('/', function(req, res) {
     var twilio = require('twilio');
