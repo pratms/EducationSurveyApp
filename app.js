@@ -14,7 +14,7 @@ var app = express();
 
 
 // view engine setup
-var db = mongojs('mongodb://localhost/students', ['details']);
+var db = mongojs('mongodb://<pratik>:<pratik>@ds059496.mlab.com:59496/heroku_9rflxd4s', ['details']);
 
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
@@ -59,7 +59,7 @@ app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
     var string = req.body.Body;
-
+    var from = req.body.From;
       string = string.split(" ");
       var stringArray = new Array();
       for(var i =0; i < string.length; i++)
@@ -72,7 +72,7 @@ app.get('/', function(req, res) {
     var zip = stringArray[0];
     if (str == 'yes') {
             twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
-          
+          db.details.insert( { number: from, zip: zip, response: str  } )
 
     } else if(str == 'no') {
         twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
@@ -89,6 +89,7 @@ app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
         var string = req.body.Body;
+        var from = req.body.From;
 
       string = string.split(" ");
       var stringArray = new Array();
@@ -102,6 +103,7 @@ app.post('/', function(req, res) {
     var zip = stringArray[0];
     if (str == 'yes') {
         twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
+        db.details.insert( { number: from, zip: zip, response: str  } )
     } else if(str == 'no') {
         twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
     } else {
