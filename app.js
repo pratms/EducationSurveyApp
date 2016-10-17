@@ -14,7 +14,7 @@ var app = express();
 
 
 // view engine setup
-var db = mongojs('mongodb://<pratik>:<pratik>@ds059496.mlab.com:59496/heroku_9rflxd4s', ['details']);
+var db = mongojs('mongodb://pratik:pratik@ds059496.mlab.com:59496/heroku_9rflxd4s', ['details']);
 
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
