@@ -76,6 +76,7 @@ app.get('/', function(req, res) {
 
     } else if(str == 'no') {
         twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
+        db.details.insert( { number: from, zip: zip, response: str  } )
     } else {
         twiml.message('Invalid Response try again.');
     }
@@ -106,6 +107,7 @@ app.post('/', function(req, res) {
         db.details.insert( { number: from, zip: zip, response: str  } )
     } else if(str == 'no') {
         twiml.message('Thanks for reply your Response will be usefull to improve' + zip);
+        db.details.insert( { number: from, zip: zip, response: str  } )
     } else {
         twiml.message('Invalid Response try again.');
     }
