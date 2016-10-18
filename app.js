@@ -69,6 +69,10 @@ app.get('/posts', function(req, res)
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
+
+     if (req.query.Body == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
     var string = req.body.Body;
     var from = req.body.From;
       string = string.split(" ");
@@ -82,17 +86,18 @@ app.get('/', function(req, res) {
     var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
 
-     if (req.query.Body == 'Start') {
-      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-     }
 
 
-    else if (str == 'a') {
+  if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
     } 
+
+    else if (req.query.Body == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
     else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
@@ -121,6 +126,9 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
+     if (req.body.Body == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
         var string = req.body.Body;
         var from = req.body.From;
 
@@ -134,16 +142,17 @@ app.post('/', function(req, res) {
       var str = stringArray[1].toLowerCase();
 
       var zip = stringArray[0];
-       if (req.body.Body == 'Start') {
-      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-     }
+    
 
-     else if (str == 'a') {
+ if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
     } 
+       else if (req.body.Body == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
     else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
