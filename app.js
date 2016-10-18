@@ -82,7 +82,12 @@ app.get('/', function(req, res) {
     var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
 
-if (str == 'a') {
+     if (string == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
+
+
+    else if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
@@ -107,14 +112,8 @@ if (str == 'a') {
      {
         twiml.message('Invalid Response try again.');
     }
-    
-      if (string == 'Start') {
-      twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-     }
-       else 
-     {
-        twiml.message('Invalid Response try again.');
-    }
+
+
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
 });
@@ -135,7 +134,11 @@ app.post('/', function(req, res) {
       var str = stringArray[1].toLowerCase();
 
       var zip = stringArray[0];
-     if (str == 'a') {
+       if (string == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
+
+     else if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
@@ -159,13 +162,7 @@ app.post('/', function(req, res) {
      {
         twiml.message('Invalid Response try again.');
     }
-       if (string == 'Start') {
-      twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-     }
-       else 
-     {
-        twiml.message('Invalid Response try again.');
-    }
+ 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
 });
