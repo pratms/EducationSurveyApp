@@ -139,7 +139,7 @@ app.post('/', function(req, res) {
         twiml.message('Thanks for your feedback');
         var res = "Moderately Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
-    }
+    
      } else if(str == 'c') {
         twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
