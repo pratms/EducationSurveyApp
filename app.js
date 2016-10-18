@@ -89,10 +89,6 @@ app.post('/', function(req, res) {
     if (req.body.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
-     else 
-     {
-        twiml.message('Invalid Response try again.');
-    }
  
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
