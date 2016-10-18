@@ -82,7 +82,7 @@ app.get('/', function(req, res) {
     var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
 
-     if (req.body.Body == 'Start') {
+     if (req.query.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
 
