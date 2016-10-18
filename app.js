@@ -69,44 +69,44 @@ app.get('/posts', function(req, res)
 app.get('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-     if (req.query.Body == 'Start') {
+   
+    // var string = req.body.Body;
+    // var from = req.body.From;
+    //   string = string.split(" ");
+    //   var stringArray = new Array();
+    //   for(var i =0; i < string.length; i++)
+    //   {
+    //   stringArray.push(string[i]);
+
+    //   }
+     
+    // var str = stringArray[1].toLowerCase();
+    // var zip = stringArray[0];
+
+  if (req.body.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area.');
      }
-    var string = req.body.Body;
-    var from = req.body.From;
-      string = string.split(" ");
-      var stringArray = new Array();
-      for(var i =0; i < string.length; i++)
-      {
-      stringArray.push(string[i]);
 
-      }
-     
-    var str = stringArray[1].toLowerCase();
-    var zip = stringArray[0];
+  // if (str == 'a') {
+  //           twiml.message('Thanks for your feedback');
+  //           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
-
-
-  if (str == 'a') {
-            twiml.message('Thanks for your feedback');
-            db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
-
-    } 
+  //   } 
 
   
-    else if(str == 'b') {
-        twiml.message('Thanks for your feedback');
+  //   else if(str == 'b') {
+  //       twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
+  //       db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
     
-     } 
-     else if(str == 'c') 
-     {
+  //    } 
+  //    else if(str == 'c') 
+  //    {
 
-        twiml.message('Thanks for your feedback');
+  //       twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
-     }
+  //       db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
+  //    }
   
 
      else 
@@ -122,44 +122,44 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
     var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
-       if (req.body.Body == 'Start') {
+
+      //   var string = req.body.Body;
+      //   var from = req.body.From;
+
+      // string = string.split(" ");
+      // var stringArray = new Array();
+      // for(var i =0; i < string.length; i++)
+      // {
+      // stringArray.push(string[i]);
+
+      // }
+      // var str = stringArray[1].toLowerCase();
+
+      // var zip = stringArray[0];
+    
+    if (req.body.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area.');
      }
-        var string = req.body.Body;
-        var from = req.body.From;
-
-      string = string.split(" ");
-      var stringArray = new Array();
-      for(var i =0; i < string.length; i++)
-      {
-      stringArray.push(string[i]);
-
-      }
-      var str = stringArray[1].toLowerCase();
-
-      var zip = stringArray[0];
-    
-
- if (str == 'a') {
-            twiml.message('Thanks for your feedback');
+ // if (str == 'a') {
+ //            twiml.message('Thanks for your feedback');
             
-          db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
+ //          db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
-    } 
+ //    } 
     
-    else if(str == 'b') {
-        twiml.message('Thanks for your feedback');
+ //    else if(str == 'b') {
+ //        twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
+ //        db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
     
-     } 
-     else if(str == 'c') 
-     {
+ //     } 
+ //     else if(str == 'c') 
+ //     {
 
-        twiml.message('Thanks for your feedback');
+ //        twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
-     }
+ //        db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
+ //     }
 
      else 
      {
