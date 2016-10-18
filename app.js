@@ -82,32 +82,51 @@ app.get('/', function(req, res) {
     var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
 
-    if (str == 'a') {
-            twiml.message('Thanks for your feedback');
-             var res = "Extermely Satisfied";
-          db.details.insert( { number: from, zip: zip, response: res  } )
 
-    } else if(str == 'b') {
+
+    switch(str) {
+    case a:
+        twiml.message('Thanks for your feedback');
+        var res = "Extermely Satisfied";
+        db.details.insert( { number: from, zip: zip, response: res  } )
+        break;
+    case b:
         twiml.message('Thanks for your feedback');
         var res = "Moderately Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
-    
-     } else if(str == 'c') {
+        break;
+    case c:
         twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
-    }
-    else if (req.body.Body == 'start') {
+
+      }
+
+    // if (str == 'a') {
+    //         twiml.message('Thanks for your feedback');
+    //          var res = "Extermely Satisfied";
+    //       db.details.insert( { number: from, zip: zip, response: res  } )
+
+    // } else if(str == 'b') {
+    //     twiml.message('Thanks for your feedback');
+    //     var res = "Moderately Satisfied";
+    //     db.details.insert( { number: from, zip: zip, response: res  } )
+    
+    //  } else if(str == 'c') {
+    //     twiml.message('Thanks for your feedback');
+    //     var res = "Not at all Satisfied";
+    //     db.details.insert( { number: from, zip: zip, response: res  } )
+    // }
+  if (req.body.Body == 'start') {
       twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-
-
-
-    }
+   }
+  
 
 
      else {
         twiml.message('Invalid Response try again.');
     }
+
     res.writeHead(200, {'Content-Type': 'text/xml'});
 
     res.end(twiml.toString());
@@ -130,34 +149,54 @@ app.post('/', function(req, res) {
       var str = stringArray[1].toLowerCase();
 
     var zip = stringArray[0];
-     if (str == 'a') {
-            twiml.message('Thanks for your feedback');
-             var res = "Extermely Satisfied";
-          db.details.insert( { number: from, zip: zip, response: res  } )
-
-    } else if(str == 'b') {
+    switch(str) {
+    case a:
+        twiml.message('Thanks for your feedback');
+        var res = "Extermely Satisfied";
+        db.details.insert( { number: from, zip: zip, response: res  } )
+        break;
+    case b:
         twiml.message('Thanks for your feedback');
         var res = "Moderately Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
-    
-     } else if(str == 'c') {
+        break;
+    case c:
         twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
-    }
-    else if (req.body.Body == 'start') {
+
+      }
+
+    // if (str == 'a') {
+    //         twiml.message('Thanks for your feedback');
+    //          var res = "Extermely Satisfied";
+    //       db.details.insert( { number: from, zip: zip, response: res  } )
+
+    // } else if(str == 'b') {
+    //     twiml.message('Thanks for your feedback');
+    //     var res = "Moderately Satisfied";
+    //     db.details.insert( { number: from, zip: zip, response: res  } )
+    
+    //  } else if(str == 'c') {
+    //     twiml.message('Thanks for your feedback');
+    //     var res = "Not at all Satisfied";
+    //     db.details.insert( { number: from, zip: zip, response: res  } )
+    // }
+  if (req.body.Body == 'start') {
       twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+   }
+  
 
 
-
-    }
      else {
         twiml.message('Invalid Response try again.');
     }
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
-});
 
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+
+    res.end(twiml.toString());
+    
+});
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
