@@ -92,14 +92,20 @@ app.get('/', function(req, res) {
         var res = "Moderately Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
     
-     } else if(str == 'c')
+     } 
+     if(str == 'c')
       {
         twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
     }
   
+    else if (req.body.Body == 'start') {
+      twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
 
+
+
+    }
 
      else 
      {
@@ -139,11 +145,17 @@ app.post('/', function(req, res) {
         db.details.insert( { number: from, zip: zip, response: res  } )
     
      } 
-     else if(str == 'c') 
+     if(str == 'c') 
      {
         twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
         db.details.insert( { number: from, zip: zip, response: res  } )
+    }
+    else if (req.body.Body == 'start') {
+      twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+
+
+
     }
 
      else 
