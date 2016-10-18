@@ -82,43 +82,35 @@ app.get('/', function(req, res) {
     var str = stringArray[1].toLowerCase();
     var zip = stringArray[0];
 
-    if (str == 'a') {
-            var res = "Extermely Satisfied";
-
+if (str == 'a') {
             twiml.message('Thanks for your feedback');
-             
-          db.details.insert( { number: from, zip: zip, response: res  } )
+            
+          db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
-    } else if(str == 'b') {
-        var res = "Moderately Satisfied";
+    } 
+    else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: res  } )
+        db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
     
      } 
-     if(str == 'c')
-      {
-        var res = "Not at all Satisfied";
+     if(str == 'c') 
+     {
+
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: res  } )
-    }
-  
+        db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
+     }
     else if (req.body.Body == 'Start') {
       twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-
-
-
-    }
+     }
 
      else 
      {
         twiml.message('Invalid Response try again.');
     }
     res.writeHead(200, {'Content-Type': 'text/xml'});
-
     res.end(twiml.toString());
-    
 });
 
 app.post('/', function(req, res) {
@@ -136,34 +128,29 @@ app.post('/', function(req, res) {
       }
       var str = stringArray[1].toLowerCase();
 
-    var zip = stringArray[0];
+      var zip = stringArray[0];
      if (str == 'a') {
-       var res = "Extermely Satisfied";
             twiml.message('Thanks for your feedback');
             
-          db.details.insert( { number: from, zip: zip, response: res  } )
+          db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
     } 
     else if(str == 'b') {
-        var res = "Moderately Satisfied";
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: res  } )
+        db.details.insert( { number: from, zip: zip, response: "Moderately Satisfied"  } )
     
      } 
      if(str == 'c') 
      {
-      var res = "Not at all Satisfied";
+
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, zip: zip, response: res  } )
-    }
-    else if (req.body.Body == 'start') {
+        db.details.insert( { number: from, zip: zip, response: "Not at all Satisfied"  } )
+     }
+    else if (req.body.Body == 'Start') {
       twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-
-
-
-    }
+     }
 
      else 
      {
