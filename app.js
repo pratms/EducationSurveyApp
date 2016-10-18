@@ -83,24 +83,28 @@ app.get('/', function(req, res) {
     var zip = stringArray[0];
 
     if (str == 'a') {
+            var res = "Extermely Satisfied";
+
             twiml.message('Thanks for your feedback');
-             var res = "Extermely Satisfied";
+             
           db.details.insert( { number: from, zip: zip, response: res  } )
 
     } else if(str == 'b') {
-        twiml.message('Thanks for your feedback');
         var res = "Moderately Satisfied";
+        twiml.message('Thanks for your feedback');
+        
         db.details.insert( { number: from, zip: zip, response: res  } )
     
      } 
      if(str == 'c')
       {
-        twiml.message('Thanks for your feedback');
         var res = "Not at all Satisfied";
+        twiml.message('Thanks for your feedback');
+        
         db.details.insert( { number: from, zip: zip, response: res  } )
     }
   
-    else if (req.body.Body == 'start') {
+    else if (req.body.Body == 'Start') {
       twiml.message('How much satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
 
 
@@ -134,21 +138,24 @@ app.post('/', function(req, res) {
 
     var zip = stringArray[0];
      if (str == 'a') {
+       var res = "Extermely Satisfied";
             twiml.message('Thanks for your feedback');
-             var res = "Extermely Satisfied";
+            
           db.details.insert( { number: from, zip: zip, response: res  } )
 
     } 
     else if(str == 'b') {
-        twiml.message('Thanks for your feedback');
         var res = "Moderately Satisfied";
+        twiml.message('Thanks for your feedback');
+        
         db.details.insert( { number: from, zip: zip, response: res  } )
     
      } 
      if(str == 'c') 
      {
+      var res = "Not at all Satisfied";
         twiml.message('Thanks for your feedback');
-        var res = "Not at all Satisfied";
+        
         db.details.insert( { number: from, zip: zip, response: res  } )
     }
     else if (req.body.Body == 'start') {
