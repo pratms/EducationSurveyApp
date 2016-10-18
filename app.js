@@ -83,9 +83,7 @@ app.get('/', function(req, res) {
     var zip = stringArray[0];
 
      if (req.body.Body == 'Start') {
-      twiml.message('How satisfied are you with the quality of education in your area.
-       Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n 
-       (eg. 11111 A) send us a reply');
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
 
 
@@ -137,9 +135,7 @@ app.post('/', function(req, res) {
 
       var zip = stringArray[0];
        if (req.body.Body == 'Start') {
-      twiml.message('How satisfied are you with the quality of education in your area. 
-        Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n 
-        C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
 
      else if (str == 'a') {
