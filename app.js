@@ -79,18 +79,15 @@ app.get('/', function(req, res) {
 
       }
      
-    var str = stringArray[1].toLowerCase();
-    var zip = stringArray[0];
+   if (str) {
+        var str = stringArray[1].toLowerCase();
 
 
+      };
+      
 
-  if (str == 'a') {
-            twiml.message('Thanks for your feedback');
-            db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
-
-    } 
-
-    else if (req.body.Body == 'Start') {
+      var zip = stringArray[0];
+      if (req.body.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
     else if(str == 'b') {
@@ -131,20 +128,26 @@ app.post('/', function(req, res) {
       stringArray.push(string[i]);
 
       }
-      var str = stringArray[1].toLowerCase();
+      if (str) {
+        var str = stringArray[1].toLowerCase();
+
+
+      };
+      
 
       var zip = stringArray[0];
+      if (req.body.Body == 'Start') {
+      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
+     }
     
 
- if (str == 'a') {
+    else if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
           db.details.insert( { number: from, zip: zip, response: "Extermely Satisfied"  } )
 
     } 
-       else if (req.body.Body == 'Start') {
-      twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
-     }
+     
     else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
