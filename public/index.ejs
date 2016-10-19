@@ -23,7 +23,13 @@
 </form>
 
  
-<div class="col-md-8 col-md-offset-2" ng-show="show">
+<div class="col-md-8 col-md-offset-2" style = "margin-top:20px" ng-show="show">
+<form class="form-inline col-md-offset-4 " >
+  <div class="form-group">
+  
+    <input type="text" class="form-control" required placeholder="Search" aria-describedby="sizing-addon3"  ng-model="search">
+  </div>
+  </form>
 <table class= "table table-hover" >
 					<thead>
 						<tr>
@@ -33,7 +39,7 @@
 							
 						</tr>
 						<tbody>
-							<tr ng-repeat="employee in data">
+							<tr ng-repeat="employee in data|filter:search">
 								<td>{{employee.number}}</td>
 								<td>{{employee.zip}}</td>
 								<td>{{employee.response}}</td>
