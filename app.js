@@ -9,7 +9,7 @@ var mongojs = require('mongojs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var db = mongojs('mongodb://pratik:pratik@ds133438.mlab.com:33438/heroku_9rvcpdq9', ['users']);
+var db = mongojs('mongodb://pratik:pratik@ds133438.mlab.com:33438/heroku_9rvcpdq9', ['details']);
 var app = express();
 
 app.set('views', path.join(__dirname, 'public'));
